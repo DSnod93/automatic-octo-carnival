@@ -9,28 +9,75 @@
 
 <body>
 
-    
+
 </body>
 
 <script>
 
-function getComputerChoice() {
-   const choices = ['rock', 'paper', 'scissors'];
-   const randomChoice = Math.floor(Math.random() * 3);
-    return choices[randomChoice];
-}
+    function getComputerChoice() {
+        const choices = ['rock', 'paper', 'scissors'];
+        const randomChoice = Math.floor(Math.random() * 3);
+        return choices[randomChoice];
+    }
 
-getComputerChoice();
+    // getComputerChoice();
 
 
 
-function getPlayerChoice() {
-    const playerChoice = prompt('Please choose rock, paper, or scissors');
-    return playerChoice;
-}
+    function getPlayerChoice() {
+        const playerChoice = prompt('Please choose rock, paper, or scissors');
+        return playerChoice;
+    }
 
-getPlayerChoice();
+    // getPlayerChoice();
 
+
+    function roundWinner() {
+        const playerChoice = getPlayerChoice();
+        const computerChoice = getComputerChoice();
+
+        if (playerChoice === computerChoice) {
+            return 'Tie';
+        } else if (playerChoice === 'rock') {
+            if (computerChoice === 'paper') {
+                return 'Computer';
+            } else {
+                return 'Player';
+            }
+        } else if (playerChoice === 'paper') {
+            if (computerChoice === 'scissors') {
+                return 'Computer';
+            } else {
+                return 'Player';
+            }
+        } else if (playerChoice === 'scissors') {
+            if (computerChoice === 'rock') {
+                return 'Computer';
+            } else {
+                return 'Player';
+            }
+        }
+    }
+
+    function playGame() {
+
+        const playerChoice = getPlayerChoice();
+        const computerChoice = getComputerChoice();
+        const winner = roundWinner();
+        console.log(`Player chose ${playerChoice} and computer chose ${computerChoice}`);
+        console.log(`${winner} wins!`);
+
+        for (let i = 0; i < 5; i++) {
+            const winner = roundWinner();
+            if (winner === 'Player') {
+                alert('You win!');
+                return;
+            } else if (winner === 'Computer') {
+                alert('You lose!');
+                return;
+            }
+        }
+    }
 
 </script>
 
